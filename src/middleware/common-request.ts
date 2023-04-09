@@ -15,11 +15,5 @@ export const commonValidator = () => {
       return next();
     }
     setResponse(400, _res, {}, errs);
-    return next({
-      status: 400,
-      endpoint: req.url,
-      method: req.method,
-      error: errs.array(),
-    });
   };
 };

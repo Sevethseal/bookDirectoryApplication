@@ -16,7 +16,7 @@ export const setResponse = (
   if (error) {
     responseJson = {
       ...responseJson,
-      errors: error,
+      ...error,
     };
   }
   response.status(statusCode).json(responseJson);
