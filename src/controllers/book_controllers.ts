@@ -13,4 +13,20 @@ export default {
     const bookId = await book.createBook(body);
     res.send(bookId);
   },
+  updateBook: async (req: CreateBookRequest, res: Response) => {
+    const { path, body } = req;
+    const bookId = path.split("/").pop();
+    const updateBookObject = {
+      bookId,
+      ...body,
+    };
+    await book.updateBook(updateBookObject);
+    setResponse(200, res, {});
+  },
+  deleteBook: async (req: Request, res: Response) => {
+    const { path } = req;
+    const bookId = path.split("/").pop() as string;
+    await book.deleteBook(bookId);
+    setResponse(202, res, {});
+  },
 };

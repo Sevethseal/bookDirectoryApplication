@@ -1,5 +1,10 @@
-import { createBook, getAllBookList } from "../db/dao/book";
-import { CreateBookRequestBody } from "../types/book";
+import {
+  createBook,
+  deleteBook,
+  getAllBookList,
+  updateBook,
+} from "../db/dao/book";
+import { BookDetail, CreateBookRequestBody } from "../types/book";
 
 export default {
   getBooksList: async () => {
@@ -11,5 +16,13 @@ export default {
     const bookId = await createBook(bookDetailObject);
     console.log(bookId);
     return bookId;
+  },
+  updateBook: async (bookDetailObject: BookDetail) => {
+    const temp = await updateBook(bookDetailObject);
+    console.log(temp);
+  },
+  deleteBook: async (bookId: string) => {
+    const temp = await deleteBook(bookId);
+    console.log(temp);
   },
 };
